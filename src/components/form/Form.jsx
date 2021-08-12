@@ -3,13 +3,19 @@ import styles from './style.module.css'
 import Button from "../../ui/button/Button";
 import {useForm} from "react-hook-form";
 import {validations} from "../../validation/validation";
+import {postNewComments} from "../../api/formApi";
 
-const Form = ({modal, setModal}) => {
+const Form = ({setModal}) => {
 
 
     const {register, handleSubmit, formState: {errors}} = useForm()
     const onSubmit = (data) => {
-        console.log(JSON.stringify(data));
+        JSON.stringify(data)
+        const {name, text} = data
+        // console.log(name)
+        // console.log(text)
+        postNewComments(name, text)
+        setModal(false)
     };
 
 
@@ -36,9 +42,9 @@ const Form = ({modal, setModal}) => {
                             <div className="form-group">
                                 <label className="form-label mt-4">Comment</label>
                                 <textarea className="form-control" rows="3" placeholder="Comment please..."
-                                          {...register("messageText", validations.message)}
+                                          {...register("text", validations.message)}
                                 />
-                                {errors?.messageText?.type === "required" &&
+                                {errors?.text?.type === "required" &&
                                 <small className="form-text text-danger ">This field is required</small>}
                             </div>
                             <Button children={'Send comment'}/>

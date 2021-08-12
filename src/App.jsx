@@ -18,6 +18,8 @@ const App = () => {
     const [comments, setComments] = useState([])
     const [totalPageCount, setTotalPageCount] = useState('')
     const [checkedPage, setCheckedPage] = useState(1)
+    //for button show more
+    const [totalComments, setTotalComments] = useState('')
     const limit = 10
 
     //for fast show in open app
@@ -28,6 +30,7 @@ const App = () => {
                 const total = response.data.total
                 //watch, how many pages
                 setTotalPageCount(getPerPageCount(total, limit))
+                setTotalComments(total)
             })
     }, [checkedPage])
 
@@ -48,8 +51,8 @@ const App = () => {
     // console.log(pageOnArray)
     console.log(comments)
     // console.log(totalPageCount)
-
-    console.log(checkedPage)
+    console.log(totalComments)
+    // console.log(checkedPage)
 
     return (
         <div className="app">
@@ -58,7 +61,7 @@ const App = () => {
                 <Route exact path='/form'>
                     {/*можно и по другому реализовать*/}
                     <Button onClick={() => setModal(!modal)} children={modal ? 'Close form' : 'Open form'}/>
-                    {modal && <Form/>}
+                    {modal && <Form setModal={setModal}/>}
                     <div className='app_comments'>
                         <TransitionGroup>
                             {comments.length < 0 ? <Loader/> : comments.map((comment) => {
@@ -76,12 +79,15 @@ const App = () => {
                             }
                         </TransitionGroup>
                     </div>
-                    {}
-                    <Button className='btn btn-primary mb-4' children={"Show more"}
-                            onClick={handleShowMore}/>
+                    {totalComments === comments.length ? '' : <Button
+                        className='btn btn-primary mb-4'
+                        children={"Show more"}
+                        onClick={handleShowMore}
+                    />}
                     <div className='app_pagination'>
                         {pageOnArray.map((page) => {
                             return <Pagination
+                                checkedPage={checkedPage}
                                 setCheckedPage={setCheckedPage}
                                 key={page}
                                 page={page}

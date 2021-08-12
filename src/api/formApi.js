@@ -8,3 +8,6 @@ export const getAllComment = (page = 1) => {
 }
 
 
+export const postNewComments = (name, text) => {
+    return axios.post(baseURL, {name, text})
+}
