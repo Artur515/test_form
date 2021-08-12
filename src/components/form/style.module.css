@@ -1,0 +1,16 @@
+.form {
+    width: 500px;
+}
+
+
+@media (max-width: 500px) {
+   .form{
+      width: 320px;
+   }
+}
+
+@media (max-width: 360px) {
+    .form{
+        width: 280px;
+    }
+}

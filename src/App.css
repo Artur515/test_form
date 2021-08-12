@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+.app {
+    box-sizing: border-box;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.app_comments {
+    margin: 50px auto 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app_pagination{
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/*styles transition group*/
+.remove-btn {
+    margin-right: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.comment-enter {
+    opacity: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.comment-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.comment-exit {
+    opacity: 1;
+}
+
+.comment-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
 }
