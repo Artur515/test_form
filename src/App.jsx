@@ -11,6 +11,7 @@ import Loader from "./ui/loader/Loader";
 import {getPagesOnArray, getPerPageCount} from "./utils/pages";
 import Pagination from "./ui/pagination/Pagination";
 
+
 let page = 1
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
     const [comments, setComments] = useState([])
     const [totalPageCount, setTotalPageCount] = useState('')
     const [checkedPage, setCheckedPage] = useState(1)
+
     //for button show more
     const [totalComments, setTotalComments] = useState('')
     const limit = 10
@@ -49,9 +51,9 @@ const App = () => {
 
 
     // console.log(pageOnArray)
-    console.log(comments)
+    // console.log(comments)
     // console.log(totalPageCount)
-    console.log(totalComments)
+    // console.log(totalComments)
     // console.log(checkedPage)
 
     return (
